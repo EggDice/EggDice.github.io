@@ -1,0 +1,184 @@
+:root {
+  --main-background: rgb(31, 19, 5);
+  --main-content: rgb(180, 225, 253);
+  --grey: rgb(63, 63, 63);
+  --red: rgb(255, 8, 131);
+  --green: rgb(131, 255, 8);
+  --orange: rgb(255, 131, 8);
+  --blue: rgb(8, 131, 255);
+  --purple: rgb(131, 8, 255);
+  --teal: rgb(8, 255, 131);
+  --indentation: 2ch;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: var(--main-background);
+  color: var(--main-content);
+  font-family: 'Courier Prime', monospace;
+  font-size: 18px;
+}
+
+body {
+  margin: 2em 4ch;
+}
+
+main {
+  width: 80ch;
+  margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 1em;
+  margin-bottom: 1em;
+  clear: both;
+}
+
+h1 {
+  color: var(--red);
+}
+
+h1::before {
+  content: '# ';
+}
+
+h2 {
+  color: var(--green);
+}
+
+h2::before {
+  content: '## ';
+}
+
+h3 {
+  color: var(--orange);
+}
+
+h3::before {
+  content: '### ';
+}
+
+address {
+  font-style: normal;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.profile {
+  display: flex;
+  float: left;
+  margin-bottom: 1em;
+}
+
+.profile img {
+  height: 12em;
+}
+
+.profile::after {
+  content: '|\A|\A|\A\|\A|\A|\A|\A|\A|\A|\A|';
+  white-space: pre;
+  margin: 0 var(--indentation);
+  color: var(--teal);
+}
+
+li {
+  list-style-type: none;
+  position: relative;
+  padding-left: 2ch;
+}
+
+li::before {
+  content: '-';
+  color: var(--orange);
+  position: absolute;
+  left: 0;
+}
+
+.links {
+  margin-bottom: 1em;
+}
+
+.links a {
+  color: var(--blue);
+}
+
+.links a::before {
+  content: '[';
+  color: var(--purple);
+}
+
+.links a::after {
+  content: '](' attr(href) ')';
+  color: var(--purple);
+}
+
+.experience-details::before {
+  content: '```yaml';
+  color: var(--grey);
+  display: block;
+}
+
+.experience-details::after {
+  content: '```';
+  color: var(--grey);
+  display: block;
+  margin-bottom: 1em;
+}
+
+.experience-details dt {
+  padding-left: var(--indentation);
+  color: var(--blue);
+  display: inline;
+  text-transform: lowercase;
+}
+
+.experience-details dt::after {
+  content: ':';
+  color: var(--purple);
+}
+
+.experience-details dd {
+  color: var(--teal);
+  display: inline;
+}
+
+.experience-details dd::after {
+  content: ' ';
+  display: block;
+}
+
+.experience-details .separator {
+  color: var(--orange);
+}
+
+.experience-details ul {
+  padding-left: calc(var(--indentation) * 2);
+}
+
+.experience-details time {
+  color: var(--red);
+}
+
+.experience-details a {
+  color: var(--red);
+}
+
+.experience-details address {
+  display: inline;
+  color: var(--red);
+}
