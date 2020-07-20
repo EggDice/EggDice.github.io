@@ -14,6 +14,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -23,13 +24,11 @@ html {
   font-size: 18px;
 }
 
-body {
-  margin: 2em 4ch;
-}
-
 main {
-  width: 80ch;
+  width: 84ch;
   margin: 0 auto;
+  padding: 2ch;
+  max-width: 100%;
 }
 
 h1,
@@ -69,6 +68,7 @@ h3::before {
 
 address {
   font-style: normal;
+  width: 100%;
 }
 
 a {
@@ -96,6 +96,10 @@ a:hover {
   color: var(--teal);
 }
 
+.bio {
+  margin-bottom: 1em;
+}
+
 li {
   list-style-type: none;
   position: relative;
@@ -115,6 +119,10 @@ li::before {
 
 .links a {
   color: var(--blue);
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .links a::before {
@@ -182,3 +190,60 @@ li::before {
   display: inline;
   color: var(--red);
 }
+
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+
+  main {
+    width: 100%;
+  }
+
+  .profile {
+    float: none;
+  }
+
+  .profile::after {
+    display: none;
+  }
+
+  .profile img {
+    width: 100%;
+    height: initial;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 800px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media print {
+  :root {
+    --main-background: rgb(255, 255, 255);
+    --main-content: rgb(53, 53, 53);
+    --grey: rgb(179, 179, 179);
+    --red: rgb(230, 69, 105);
+    --green: rgb(137, 210, 135);
+    --orange: rgb(218, 183, 82);
+    --blue: rgb(67, 158, 207);
+    --purple: rgb(217, 97, 220);
+    --teal: rgb(100, 170, 175);
+  }
+
+  html {
+    font-size: 15px;
+  }
+
+  main {
+    padding: 0;
+  }
+
+  @page {
+    size: A4;
+    margin: 2em 6ch;
+  }
+}
+
