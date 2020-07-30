@@ -9,6 +9,9 @@
   --purple: rgb(131, 8, 255);
   --teal: rgb(8, 255, 131);
   --indentation: 2ch;
+  --font-size: 18px;
+  --line-height: 20px;
+  --line-height-margin: calc(var(--line-height) * 0.99);
 }
 
 * {
@@ -21,14 +24,19 @@ html {
   background: var(--main-background);
   color: var(--main-content);
   font-family: 'Courier Prime', monospace;
-  font-size: 18px;
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+}
+
+body {
+  padding: 2ch;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 main {
-  width: 84ch;
-  margin: 0 auto;
-  padding: 2ch;
-  max-width: 100%;
+  max-width: 80ch;
 }
 
 h1,
@@ -38,7 +46,7 @@ h4,
 h5,
 h6 {
   font-size: 1em;
-  margin-bottom: 1em;
+  margin-bottom: var(--line-height-margin);
   clear: both;
 }
 
@@ -97,7 +105,7 @@ a:hover {
 }
 
 .bio {
-  margin-bottom: 1em;
+  margin-bottom: var(--line-height-margin);
 }
 
 li {
@@ -114,7 +122,7 @@ li::before {
 }
 
 .links {
-  margin-bottom: 1em;
+  margin-bottom: var(--line-height-margin);
 }
 
 .links a {
@@ -145,7 +153,7 @@ li::before {
   content: '```';
   color: var(--grey);
   display: block;
-  margin-bottom: 1em;
+  margin-bottom: var(--line-height-margin);
 }
 
 .experience-details dt {
@@ -191,11 +199,33 @@ li::before {
   color: var(--red);
 }
 
+.has-line-numbers {
+  position: relative;
+  padding-left: 5ch;
+  overflow: hidden;
+}
+
+.line-numbers {
+  counter-reset: lines;
+  text-align: right;
+  color: var(--grey);
+  position: absolute;
+  top: 0;
+  left: -1ch;
+}
+
+.line-numbers div::before {
+  counter-increment: lines;
+  content: counter(lines);
+}
+
 @media (max-width: 480px) {
-  html {
-    font-size: 14px;
+  :root --line-height{
+    --font-size: 14px;
+    --line-height: 16px;
   }
 
+  body,
   main {
     width: 100%;
   }
@@ -212,11 +242,24 @@ li::before {
     width: 100%;
     height: initial;
   }
+
+  .line-numbers {
+    display: none;
+  }
+
+  .has-line-numbers {
+    padding-left: 0;
+  }
 }
 
 @media (min-width: 481px) and (max-width: 800px) {
-  html {
-    font-size: 16px;
+  :root {
+    --font-size: 16px;
+    --line-height: 18px;
+  }
+
+  main {
+    overflow: hidden;
   }
 }
 
@@ -231,14 +274,20 @@ li::before {
     --blue: rgb(67, 158, 207);
     --purple: rgb(217, 97, 220);
     --teal: rgb(100, 170, 175);
+    --font-size: 14px;
+    --line-height: 16px;
   }
 
-  html {
-    font-size: 15px;
-  }
-
-  main {
+  body {
     padding: 0;
+  }
+
+  .line-numbers {
+    display: none;
+  }
+
+  .has-line-numbers {
+    padding-left: 0;
   }
 
   @page {
