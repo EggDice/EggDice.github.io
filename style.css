@@ -11,7 +11,6 @@
   --indentation: 2ch;
   --font-size: 18px;
   --line-height: 20px;
-  --line-height-margin: calc(var(--line-height) * 0.99);
 }
 
 * {
@@ -46,7 +45,7 @@ h4,
 h5,
 h6 {
   font-size: 1em;
-  margin-bottom: var(--line-height-margin);
+  margin-bottom: var(--line-height);
   clear: both;
 }
 
@@ -105,7 +104,7 @@ a:hover {
 }
 
 .bio {
-  margin-bottom: var(--line-height-margin);
+  margin-bottom: var(--line-height);
 }
 
 li {
@@ -122,7 +121,7 @@ li::before {
 }
 
 .links {
-  margin-bottom: var(--line-height-margin);
+  margin-bottom: var(--line-height);
 }
 
 .links a {
@@ -153,7 +152,7 @@ li::before {
   content: '```';
   color: var(--grey);
   display: block;
-  margin-bottom: var(--line-height-margin);
+  margin-bottom: var(--line-height);
 }
 
 .experience-details dt {
@@ -214,13 +213,17 @@ li::before {
   left: -1ch;
 }
 
+.line-numbers div {
+  height: var(--line-height);
+}
+
 .line-numbers div::before {
   counter-increment: lines;
   content: counter(lines);
 }
 
 @media (max-width: 480px) {
-  :root --line-height{
+  :root {
     --font-size: 14px;
     --line-height: 16px;
   }
